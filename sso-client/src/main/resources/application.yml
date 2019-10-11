@@ -1,0 +1,11 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /web
+
+spring:
+  datasource:
+    name: postgresqlDataSource
+    url:  jdbc:postgresql://192.168.200.149:5432/gisdata
+    username: gisdata
+    password: gisdata

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chinadci.rdc.ssoserver.repositories.UserDao">
+
+    <select id="selectAllUsers"  resultType="com.chinadci.rdc.ssoserver.models.UserInfo" databaseId="postgresql">
+        select * from aspnetusers where id > 10
+
+    </select>
+    <select id="selectAllUsers"  resultType="com.chinadci.rdc.ssoserver.models.UserInfo">
+        select * from aspnetusers
+
+    </select>
+
+</mapper>

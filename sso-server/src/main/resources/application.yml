@@ -6,6 +6,55 @@ server:
 spring:
   datasource:
     name: postgresqlDataSource
-    url:  jdbc:postgresql://192.168.200.149:5432/gisdata
-    username: gisdata
-    password: gisdata
+    url:  jdbc:postgresql://online.chinadci.com:5432/IdentityCenter
+    username: dmap
+    password: chinadci
+
+    druid:
+      url:  jdbc:postgresql://online.chinadci.com:5432/IdentityCenter
+      username: dmap
+      password: chinadci
+      driver-class-name: org.postgresql.Driver
+      filters: stat,config #stat,wall,log4j,config
+      max-active: 100
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 50
+      max-pool-prepared-statement-per-connection-size: 20
+
+
+  security:
+    oauth2:
+      client:
+        registration:
+          ataoge:
+            provider: ataoge
+            client-id: javasso
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/ataoge"
+            scope:
+            - openid
+            - profile
+            client-name: ATAOGE
+        provider:
+          ataoge:
+            issuer-uri: https://login.chinadci.com
+            user-name-attribute: user_name
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+
+mybatis:
+  mapper-locations: classpath:mappers/db/*.xml
+  type-aliases-package: com.chinadci.rdc.ssoserver.models

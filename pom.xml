@@ -17,9 +17,19 @@
     <modules>
         <module>sso-server</module>
         <module>sso-client</module>
+        <module>sso-commons</module>
+        <module>sso-api</module>
     </modules>
 
-
+        <dependencyManagement>
+            <dependencies>
+                <dependency>
+                    <groupId>com.chinadci.rdc</groupId>
+                    <artifactId>sso-commons</artifactId>
+                    <version>1.0.0-SNAPSHOT</version>
+                </dependency>
+            </dependencies>
+        </dependencyManagement>
     <build>
         <plugins>
             <plugin>
